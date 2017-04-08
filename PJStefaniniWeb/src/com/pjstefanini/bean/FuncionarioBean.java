@@ -3,6 +3,7 @@ package com.pjstefanini.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pjstefanini.dao.FuncionarioDAO;
 import com.pjstefanini.entity.Funcionario;
 
 public class FuncionarioBean {
@@ -16,7 +17,7 @@ public class FuncionarioBean {
 	}
 	
 	public void salvar(){
-		
+		FuncionarioDAO.salvar(funcionario);
 	}
 	
 	public void excluir(){

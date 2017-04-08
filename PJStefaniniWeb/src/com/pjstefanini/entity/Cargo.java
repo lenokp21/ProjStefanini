@@ -6,7 +6,6 @@ public class Cargo {
 	private String cargo;
 	private String descricao;
 	private Double valorHora;
-	private Double horaMes;
 	
 	public Integer getId() {
 		return id;
@@ -32,13 +31,7 @@ public class Cargo {
 	public void setValorHora(Double valorHora) {
 		this.valorHora = valorHora;
 	}
-	public Double getHoraMes() {
-		return horaMes;
-	}
-	public void setHoraMes(Double horaMes) {
-		this.horaMes = horaMes;
-	}
-	
+
 	
 
 }

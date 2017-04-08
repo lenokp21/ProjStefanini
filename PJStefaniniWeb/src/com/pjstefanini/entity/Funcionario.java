@@ -6,6 +6,7 @@ public class Funcionario {
 	private String nome;
 	private String cpf;
 	private String endereco;
+	private String telefone;
 	private Integer idCargo;
 	private Integer idEmpresa;
 	
@@ -45,6 +46,13 @@ public class Funcionario {
 	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
 	
 	
 	

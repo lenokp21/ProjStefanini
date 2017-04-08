@@ -7,7 +7,7 @@ public class Empresa {
 	private String nomeEmpresarial;
 	private String cnpj;
 	private String endereco;
-	private String idTelefone;
+	private Integer Telefone;
 	
 	public Integer getId() {
 		return id;
@@ -39,12 +39,7 @@ public class Empresa {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public String getIdTelefone() {
-		return idTelefone;
-	}
-	public void setIdTelefone(String idTelefone) {
-		this.idTelefone = idTelefone;
-	}
+
 	
 	
 }
