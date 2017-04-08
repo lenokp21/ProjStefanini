@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2017-04-08 13:23
+-- Generated: 2017-04-08 18:32
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -51,6 +51,8 @@ CREATE TABLE IF NOT EXISTS `db_stefanini`.`tbe_empresa` (
   `tbe_nome_fantasia` VARCHAR(255) NOT NULL,
   `tbe_nome_empresarial` VARCHAR(255) NOT NULL,
   `tbe_cnpj` MEDIUMTEXT NOT NULL,
+  `tbe_endereco` VARCHAR(255) NOT NULL,
+  `tbe_telefone` MEDIUMTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`tbe_id`),
   UNIQUE INDEX `tbe_cnpj_UNIQUE` (`tbe_cnpj`(15) ASC))
 ENGINE = InnoDB

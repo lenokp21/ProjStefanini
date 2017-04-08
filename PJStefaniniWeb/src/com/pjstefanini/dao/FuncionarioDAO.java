@@ -99,6 +99,7 @@ public class FuncionarioDAO {
 			ps.execute();
 			
 		   FabricaConexao.fechaConexao();
+		   
 		} catch (SQLException e) {
 			throw new SistemaException(" Não foi possivel excluir o Funcionario. ", e);
 		}

@@ -9,7 +9,8 @@
 	<div>
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:panelGrid columns="2" style="border: solid; border-color: black; padding: 5px; border-width: 1px; width: 20px; height:330px;">
+				<h:panelGrid columns="2"
+					style="border: solid; border-color: black; padding: 5px; border-width: 1px; width: 20px; height:330px;">
 					<p:outputLabel for="nome" value="Nome:" />
 					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" />
 
@@ -25,12 +26,18 @@
 						value="#{funcionarioBean.funcionario.telefone}" />
 
 					<p:outputLabel for="cargo" value="Cargo:" />
-					<p:inputText id="cargo"
-						value="#{funcionarioBean.funcionario.idCargo}" />
+					<p:selectOneListbox id="cargo"
+						value="#{funcionarioBean.funcionario.idCargo}" scrollHeight="100">
+						<f:selectItems value="#{cargoBean.cargos}" var="cg"
+							itemLabel="#{cg.cargo}" itemValue="#{cg.id}" />
+					</p:selectOneListbox>
 
-					<p:outputLabel for="empresa" value="Empresa:" />
-					<p:inputText id="empresa"
-						value="#{funcionarioBean.funcionario.idEmpresa}" />
+					<p:outputLabel for="emp" value="Empresa:" />
+					<p:selectOneListbox id="emp"
+						value="#{funcionarioBean.funcionario.idEmpresa}" scrollHeight="100" >
+						<f:selectItems value="#{empresaBean.empresas}" var="emp"
+							itemLabel="#{emp.nomeFantasia}" itemValue="#{emp.id}" />
+					</p:selectOneListbox>
 
 					<p:outputPanel />
 					<p:panelGrid columns="2">

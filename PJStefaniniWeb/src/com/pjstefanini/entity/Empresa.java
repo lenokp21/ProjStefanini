@@ -5,9 +5,9 @@ public class Empresa {
 	private Integer id;
 	private String nomeFantasia;
 	private String nomeEmpresarial;
-	private String cnpj;
+	private Long cnpj;
 	private String endereco;
-	private Integer Telefone;
+	private Long Telefone;
 	
 	public Integer getId() {
 		return id;
@@ -27,17 +27,23 @@ public class Empresa {
 	public void setNomeEmpresarial(String nomeEmpresarial) {
 		this.nomeEmpresarial = nomeEmpresarial;
 	}
-	public String getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
 	public String getEndereco() {
 		return endereco;
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	public Long getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(Long cnpj) {
+		this.cnpj = cnpj;
+	}
+	public Long getTelefone() {
+		return Telefone;
+	}
+	public void setTelefone(Long telefone) {
+		Telefone = telefone;
 	}
 
 	

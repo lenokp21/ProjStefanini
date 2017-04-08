@@ -7,7 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.pjstefanini.dao.CargoDAO;
 import com.pjstefanini.dao.FuncionarioDAO;
+import com.pjstefanini.entity.Cargo;
 import com.pjstefanini.entity.Funcionario;
 import com.pjstefanini.exception.SistemaException;
 
@@ -28,10 +30,10 @@ public class FuncionarioBean {
 	public void salvar() throws SistemaException{
 		
 		if(funcionario.getNome().isEmpty()){
-			throw new SistemaException(" PorFaver. Preencher os dados do Funcionario. ", null);
+			throw new SistemaException(" PorFaver. Preencher os dados do Funcionario. ");
 		}else{
 			FuncionarioDAO.salvar(funcionario);
-			funcionario = new Funcionario();
+			this.novo();
 			this.listar();
 		}
 
@@ -70,6 +72,7 @@ public class FuncionarioBean {
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
+
 	
 	
 	

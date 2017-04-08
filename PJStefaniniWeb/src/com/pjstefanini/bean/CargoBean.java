@@ -26,6 +26,7 @@ public class CargoBean {
 
 	public void salvar() throws SistemaException {
 		CargoDAO.salvar(cargo);
+		this.novo();
 		this.listar();
 	}
 

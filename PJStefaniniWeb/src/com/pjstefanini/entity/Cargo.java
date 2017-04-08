@@ -32,6 +32,9 @@ public class Cargo {
 		this.valorHora = valorHora;
 	}
 
-	
+	@Override
+	public String toString() {
+		return this.getCargo();
+	}
 
 }
