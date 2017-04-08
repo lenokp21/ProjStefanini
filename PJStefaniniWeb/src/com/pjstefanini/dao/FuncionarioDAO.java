@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.SQLError;
+import com.mysql.jdbc.ResultSetImpl;
 import com.pjstefanini.entity.Funcionario;
 import com.pjstefanini.exception.SistemaException;
 import com.pjstefanini.util.FabricaConexao;
@@ -15,8 +15,8 @@ public class FuncionarioDAO {
 	
 	private final static String insert = " INSERT INTO tbf_funcionario(tbf_nome, tbf_cpf, tbf_endereco, tbf_telefone, tbf_idcargo, tbf_idempresa)  VALUES( ?,?,?,?,?,?) ";
 	private final static String update = " UPDATE tbf_funcionario SET tbf_nome = ?, tbf_cpf = ?, tbf_endereco = ?, tbf_telefone = ?, tbf_idcargo = ?, tbf_idempresa = ? WHERE tbf_id = ? ";
-	private final String select = " SELECT * FROM tbf_funcionario ";
-	private final String delete = " DELETE FROM tbf_funcionario WHERE tbf_id = ? ";
+	private final static String select = " SELECT * FROM tbf_funcionario ";
+	private final static String delete = " DELETE FROM tbf_funcionario WHERE tbf_id = ? ";
 	
 	private static Connection conexao;
 	private static PreparedStatement ps; 
@@ -27,6 +27,9 @@ public class FuncionarioDAO {
 
 	public static void salvar(Funcionario f) throws SistemaException{
 		
+		System.out.println(" nome:" + f.getNome() + " CPF " + f.getCpf() + " endereco: " + f.getEndereco() + " telefone:" + f.getTelefone()
+		+ " cargo:" + f.getIdCargo() + " empresa:" + f.getIdEmpresa());
+		
 		try {
 			conexao = FabricaConexao.getConexao();
 			
@@ -34,6 +37,7 @@ public class FuncionarioDAO {
 				ps = (PreparedStatement) conexao.prepareStatement(insert);
 			}else{
 				ps = (PreparedStatement) conexao.prepareStatement(update);
+				ps.setInt(7, f.getId());
 			}
 			
 			ps.setString(1, f.getNome());
@@ -51,13 +55,52 @@ public class FuncionarioDAO {
 		}
 	}
 	
-	public List<Funcionario> listar(){
+	public static List<Funcionario> listar() throws SistemaException{
+		
 		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 		
-		return funcionarios;
+		conexao = FabricaConexao.getConexao();
+		
+		try {
+			ps = (PreparedStatement) conexao.prepareStatement(select);
+			ResultSetImpl rs = (ResultSetImpl) ps.executeQuery();
+			
+			while(rs.next()){
+				Funcionario f = new Funcionario();
+				
+				f.setId(rs.getInt("tbf_id"));
+				f.setNome(rs.getString("tbf_nome"));
+				f.setCpf(rs.getLong("tbf_cpf"));
+				f.setEndereco(rs.getString("tbf_endereco"));
+				f.setTelefone(rs.getLong("tbf_telefone"));
+				f.setIdCargo(rs.getInt("tbf_idcargo"));
+				f.setIdEmpresa(rs.getInt("tbf_idempresa"));
+				
+				funcionarios.add(f);
+				
+			}
+			
+			FabricaConexao.fechaConexao();
+			return funcionarios;
+			
+		} catch (SQLException e) {
+			throw new SistemaException(" Não Foi possivel listar os Funcionarios. ", e);
+		}
+		
 	}
 	
-	public void excluir(Funcionario f){
+	public static void excluir(Funcionario f) throws SistemaException{
+		conexao = FabricaConexao.getConexao();
 		
+		try {
+			ps = (PreparedStatement) conexao.prepareStatement(delete);
+			ps.setInt(1, f.getId());
+			
+			ps.execute();
+			
+		   FabricaConexao.fechaConexao();
+		} catch (SQLException e) {
+			throw new SistemaException(" Não foi possivel excluir o Funcionario. ", e);
+		}
 	}
 }

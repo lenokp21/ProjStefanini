@@ -11,15 +11,18 @@ public class Teste {
 
 		Funcionario f = new Funcionario();
 		
+		FuncionarioDAO dao = new FuncionarioDAO();
+		
 		f.setNome("Marca da Silva");
-		f.setCpf(25698754265L);
+		f.setCpf(25698984265L);
 		f.setEndereco("Endereco do funcionario");
-		f.setTelefone(6134569875L);
+		f.setTelefone(6134523875L);
 		f.setIdCargo(1);
-		f.setIdEmpresa(5);
+		f.setIdEmpresa(1);
 		
 		try {
-			FuncionarioDAO.salvar(f);
+			//FuncionarioDAO.salvar(f);
+			dao.salvar(f);
 		} catch (SistemaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

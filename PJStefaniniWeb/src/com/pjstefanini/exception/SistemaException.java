@@ -6,8 +6,8 @@ public class SistemaException extends Exception {
 		super(mensagem);
 	}
 	
-	public SistemaException(String mensagem, Throwable erro) {
-		super(mensagem, erro);
+	public SistemaException(String mensagem, Throwable e) {
+		super(mensagem, e);
 	}
 	
 	

@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2017-04-08 01:09
+-- Generated: 2017-04-08 13:23
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -9,18 +9,20 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+CREATE SCHEMA IF NOT EXISTS `db_stefanini` DEFAULT CHARACTER SET utf8 ;
+
 CREATE TABLE IF NOT EXISTS `db_stefanini`.`tbf_funcionario` (
   `tbf_id` INT(11) NOT NULL AUTO_INCREMENT,
   `tbf_nome` VARCHAR(100) NOT NULL,
-  `tbf_cpf` INT(11) NOT NULL,
+  `tbf_cpf` MEDIUMTEXT NOT NULL,
   `tbf_endereco` VARCHAR(455) NOT NULL,
-  `tbf_telefone` INT(15) NULL DEFAULT NULL,
+  `tbf_telefone` MEDIUMTEXT NULL DEFAULT NULL,
   `tbf_idcargo` INT(11) NOT NULL,
   `tbf_idempresa` INT(11) NOT NULL,
   PRIMARY KEY (`tbf_id`),
-  UNIQUE INDEX `tbf_cpf_UNIQUE` (`tbf_cpf` ASC),
   INDEX `fk_tbf_funcionario_tbc_cargo_idx` (`tbf_idcargo` ASC),
   INDEX `fk_tbf_funcionario_tbe_empresa1_idx` (`tbf_idempresa` ASC),
+  UNIQUE INDEX `tbf_cpf_UNIQUE` (`tbf_cpf`(11) ASC),
   CONSTRAINT `fk_tbf_funcionario_tbc_cargo`
     FOREIGN KEY (`tbf_idcargo`)
     REFERENCES `db_stefanini`.`tbc_cargo` (`tbc_id`)
@@ -47,9 +49,10 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `db_stefanini`.`tbe_empresa` (
   `tbe_id` INT(11) NOT NULL AUTO_INCREMENT,
   `tbe_nome_fantasia` VARCHAR(255) NOT NULL,
-  `tbe_nome_empresarial` VARCHAR(255) NULL DEFAULT NULL,
-  `tbe_cnpj` INT(15) NOT NULL,
-  PRIMARY KEY (`tbe_id`))
+  `tbe_nome_empresarial` VARCHAR(255) NOT NULL,
+  `tbe_cnpj` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY (`tbe_id`),
+  UNIQUE INDEX `tbe_cnpj_UNIQUE` (`tbe_cnpj`(15) ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 

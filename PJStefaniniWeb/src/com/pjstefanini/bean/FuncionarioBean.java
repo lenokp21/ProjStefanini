@@ -3,6 +3,7 @@ package com.pjstefanini.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -17,25 +18,41 @@ public class FuncionarioBean {
 	private Funcionario funcionario;
 	private List<Funcionario> funcionarios;
 	
-	public FuncionarioBean() {
+	public FuncionarioBean() throws SistemaException {
 		funcionario = new Funcionario();
 		funcionarios = new ArrayList<Funcionario>();
+		
+		this.listar();
 	}
 	
 	public void salvar() throws SistemaException{
-		FuncionarioDAO.salvar(funcionario);
+		
+		if(funcionario.getNome().isEmpty()){
+			throw new SistemaException(" PorFaver. Preencher os dados do Funcionario. ", null);
+		}else{
+			FuncionarioDAO.salvar(funcionario);
+			funcionario = new Funcionario();
+			this.listar();
+		}
+
+	}
+	
+	public void editar(Funcionario funcionario) throws SistemaException{
+		this.funcionario = funcionario;
+		this.listar();
+	}
+	
+	public void excluir(Funcionario funcionario) throws SistemaException{
+		FuncionarioDAO.excluir(funcionario);
+		this.listar();
+	}
+	
+	public void novo(){
 		funcionario = new Funcionario();
 	}
 	
-	public void excluir(){
-		
-	}
-	
-	public List<Funcionario> listar(){
-		
-		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
-		
-		return funcionarios;
+	public void listar() throws SistemaException{
+		funcionarios = FuncionarioDAO.listar();
 	}
 
 	public Funcionario getFuncionario() {
