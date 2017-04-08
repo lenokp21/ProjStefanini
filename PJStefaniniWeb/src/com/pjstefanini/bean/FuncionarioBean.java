@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.pjstefanini.dao.FuncionarioDAO;
 import com.pjstefanini.entity.Funcionario;
+import com.pjstefanini.exception.SistemaException;
 
 public class FuncionarioBean {
 	
@@ -16,7 +17,7 @@ public class FuncionarioBean {
 		funcionarios = new ArrayList<Funcionario>();
 	}
 	
-	public void salvar(){
+	public void salvar() throws SistemaException{
 		FuncionarioDAO.salvar(funcionario);
 	}
 	

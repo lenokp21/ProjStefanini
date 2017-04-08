@@ -4,9 +4,9 @@ public class Funcionario {
 
 	private Integer id;
 	private String nome;
-	private String cpf;
+	private Long cpf;
 	private String endereco;
-	private String telefone;
+	private Long telefone;
 	private Integer idCargo;
 	private Integer idEmpresa;
 	
@@ -21,12 +21,6 @@ public class Funcionario {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 	public String getEndereco() {
 		return endereco;
@@ -46,10 +40,17 @@ public class Funcionario {
 	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
-	public String getTelefone() {
+	
+	public Long getCpf() {
+		return cpf;
+	}
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
+	}
+	public Long getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(String telefone) {
+	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
 	}
 	
