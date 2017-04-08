@@ -3,14 +3,19 @@ package com.pjstefanini.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import com.pjstefanini.dao.FuncionarioDAO;
 import com.pjstefanini.entity.Funcionario;
 import com.pjstefanini.exception.SistemaException;
 
+@ManagedBean(name="funcionarioBean")
+@SessionScoped
 public class FuncionarioBean {
 	
-	Funcionario funcionario;
-	List<Funcionario> funcionarios;
+	private Funcionario funcionario;
+	private List<Funcionario> funcionarios;
 	
 	public FuncionarioBean() {
 		funcionario = new Funcionario();
@@ -19,6 +24,7 @@ public class FuncionarioBean {
 	
 	public void salvar() throws SistemaException{
 		FuncionarioDAO.salvar(funcionario);
+		funcionario = new Funcionario();
 	}
 	
 	public void excluir(){
@@ -31,6 +37,24 @@ public class FuncionarioBean {
 		
 		return funcionarios;
 	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+	
+	
 	
 	
 
