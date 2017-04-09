@@ -9,8 +9,8 @@
 	<div>
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:panelGrid columns="2"
-					style="border: solid; border-color: black; padding: 0px; border-width: 1px; width: 20px; height:330px;">
+				<h:panelGrid columns="2" styleClass="comBorda" >
+					
 					<p:outputLabel for="nome" value="Nome:" />
 					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" />
 
@@ -40,43 +40,43 @@
 					</p:selectOneListbox>
 
 					<p:outputPanel />
-					<p:panelGrid columns="1" >
+					<p:panelGrid columns="2" >
 						<p:commandButton value="Novo" action="#{funcionarioBean.novo()}"
 							update="@form" />
 						<p:commandButton value="Salvar"
 							action="#{funcionarioBean.salvar()}" update="@form" />
 					</p:panelGrid>
-
+					
 					<f:facet name="header">
-						<p:outputLabel value="Dados do Funcionario" />
+					<p:outputLabel value="Dados do Funcionario" />
 					</f:facet>
 
 				</h:panelGrid>
 
-				<h:panelGrid columns="1">
-					<p:dataTable value="#{funcionarioBean.funcionarios}" var="fr"
-						scrollable="true" scrollHeight="250">
-						<p:column headerText="Nome">
+				<h:panelGrid >
+					<p:dataTable value="#{funcionarioBean.funcionarios}" var="fr" scrollable="true" scrollHeight="100%" >
+						<p:column headerText="Nome" >
 							<h:outputText value="#{fr.nome}" />
 						</p:column>
-						<p:column headerText="CPF">
+						<p:column headerText="CPF" >
 							<h:outputText value="#{fr.cpf}" />
 						</p:column>
-						<p:column headerText="Endereco">
+						<p:column headerText="Endereco" priority="4">
 							<h:outputText value="#{fr.endereco}" />
 						</p:column>
-						<p:column headerText="Telefone">
+						<p:column headerText="Telefone" priority="3">
 							<h:outputText value="#{fr.telefone}" />
 						</p:column>
 						<p:column>
-							<p:commandButton title="Editar"
+							<p:commandButton value="Editar" icon="ui-icon-pencil"
 								action="#{funcionarioBean.editar(fr)}" update="@form" />
-							<p:commandButton title="Excluir"
+							<p:commandButton value="Excluir" icon="ui-icon-trash"
 								action="#{funcionarioBean.excluir(fr)}" update="@form" />
 						</p:column>
 					</p:dataTable>
+					
 				</h:panelGrid>
-
+				
 			</h:panelGrid>
 		</h:form>
 	</div>

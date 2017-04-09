@@ -9,7 +9,7 @@
 <div align="center">
 	<h:form>
 <h:panelGrid columns="2" >
-		<h:panelGrid columns="2" style="border: solid; border-color: black; padding: 5px; border-width: 1px; width: 20px; height:330px;">
+		<h:panelGrid columns="2" styleClass="comBorda">
 			<p:outputLabel for="cargo" value="Cargo:" />
 			<p:inputText id="cargo" value="#{cargoBean.cargo.cargo}" />
 			
@@ -30,8 +30,8 @@
 			
 		</h:panelGrid>
 		
-		<h:panelGrid>
-			<p:dataTable value="#{cargoBean.cargos}" var="cg" scrollable="true" scrollHeight="250">
+		<h:panelGrid styleClass="comBorda">
+			<p:dataTable value="#{cargoBean.cargos}" var="cg" scrollable="true" scrollHeight="345">
 				<p:column headerText="Cargo">
 					<h:outputText value="#{cg.cargo}" />
 				</p:column>
@@ -42,13 +42,9 @@
 					<h:outputText value="#{cg.valorHora}" />
 				</p:column>
 				<p:column>
-					<p:commandButton title="Editar" action="#{cargoBean.editar(cg)}" update="@form"/>
-					<p:commandButton title="Excluir" action="#{cargoBean.excluir(cg)}" update="@form"/>
+					<p:commandButton value="Editar" icon="ui-icon-pencil" action="#{cargoBean.editar(cg)}" update="@form"/>
+					<p:commandButton value="Excluir" icon="ui-icon-trash" action="#{cargoBean.excluir(cg)}" update="@form"/>
 				</p:column>
-				
-				<f:facet name="header">
-					<p:commandButton value="Refresh" action="#{cargoBean.listar()}" update="@form"/>
-				</f:facet>
 			</p:dataTable>
 		</h:panelGrid>
 		

@@ -9,8 +9,7 @@
 	<div>
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:panelGrid columns="2"
-					style="border: solid; border-color: black; padding: 5px; border-width: 1px; width: 20px; height:330px;">
+				<h:panelGrid columns="2" styleClass="comBorda">
 					<p:outputLabel for="nome" value="Nome Fantasia:" />
 					<p:inputText id="nome" value="#{empresaBean.empresa.nomeFantasia}" />
 
@@ -19,7 +18,7 @@
 						value="#{empresaBean.empresa.nomeEmpresarial}" />
 
 					<p:outputLabel for="cnpj" value="CNPJ:" />
-					<p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" />
+					<p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" maxlength="15" />
 
 					<p:outputLabel for="end" value="Endereço:" />
 					<p:inputText id="end" value="#{empresaBean.empresa.endereco}" />
@@ -41,8 +40,8 @@
 
 				</h:panelGrid>
 
-				<h:panelGrid>
-					<p:dataTable value="#{empresaBean.empresas}" var="emp" scrollable="true" scrollHeight="250">
+				<h:panelGrid styleClass="comBorda">
+					<p:dataTable value="#{empresaBean.empresas}" var="emp" scrollable="true" scrollHeight="345" >
 					
 						<p:column headerText="Nome Fantasia">
 							<h:outputText value="#{emp.nomeFantasia}" />
@@ -62,16 +61,11 @@
 							<h:outputText value="#{emp.telefone}" />
 						</p:column>
 						<p:column>
-							<p:commandButton title="Editar"
+							<p:commandButton value="Editar" icon="ui-icon-pencil"
 								action="#{empresaBean.editar(emp)}" update="@form" />
-							<p:commandButton title="Excluir"
+							<p:commandButton value="Excluir" icon="ui-icon-trash"
 								action="#{empresaBean.excluir(emp)}" update="@form" />
 						</p:column>
-
-						<f:facet name="header">
-							<p:commandButton value="Refresh"
-								action="#{empresaBean.listar()}" update="@form" />
-						</f:facet>
 						
 					</p:dataTable>
 					

@@ -15,5 +15,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Desenvolvimento/Workspace_neon2/GIT/ProjStefanini/PJStefaniniWeb/lib/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Desenvolvimento/Workspace_neon2/GIT/ProjStefanini/PJStefaniniWeb/lib/all-themes-1.0.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
