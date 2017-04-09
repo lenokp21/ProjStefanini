@@ -10,12 +10,12 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:panelGrid columns="2"
-					style="border: solid; border-color: black; padding: 5px; border-width: 1px; width: 20px; height:330px;">
+					style="border: solid; border-color: black; padding: 0px; border-width: 1px; width: 20px; height:330px;">
 					<p:outputLabel for="nome" value="Nome:" />
 					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" />
 
 					<p:outputLabel for="cpf" value="CPF:" />
-					<p:inputText id="cpf" value="#{funcionarioBean.funcionario.cpf}" />
+					<p:inputText maxlength="11" id="cpf" value="#{funcionarioBean.funcionario.cpf}" />
 
 					<p:outputLabel for="end" value="Endereço:" />
 					<p:inputText id="end"
@@ -40,7 +40,7 @@
 					</p:selectOneListbox>
 
 					<p:outputPanel />
-					<p:panelGrid columns="2">
+					<p:panelGrid columns="1" >
 						<p:commandButton value="Novo" action="#{funcionarioBean.novo()}"
 							update="@form" />
 						<p:commandButton value="Salvar"
@@ -53,7 +53,7 @@
 
 				</h:panelGrid>
 
-				<h:panelGrid>
+				<h:panelGrid columns="1">
 					<p:dataTable value="#{funcionarioBean.funcionarios}" var="fr"
 						scrollable="true" scrollHeight="250">
 						<p:column headerText="Nome">
@@ -74,11 +74,6 @@
 							<p:commandButton title="Excluir"
 								action="#{funcionarioBean.excluir(fr)}" update="@form" />
 						</p:column>
-
-						<f:facet name="header">
-							<p:commandButton value="Refresh"
-								action="#{funcionarioBean.listar()}" update="@form" />
-						</f:facet>
 					</p:dataTable>
 				</h:panelGrid>
 
