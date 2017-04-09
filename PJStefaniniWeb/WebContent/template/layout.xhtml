@@ -10,6 +10,20 @@
 	<h:outputStylesheet library="css" name="estilos.css" />
 	<title>S.G.F</title>
 	
+	<style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 100% !important;
+            
+            }
+             .ui-layout-north, .ui-layout-south {                    
+                overflow:hidden !important;
+            }
+
+            .ui-layout-north, .ui-layout-south, .ui-layout-unit-content {
+                overflow:hidden !important;
+            } 
+    </style>
+	
 </h:head>
 <h:body>
 
@@ -17,18 +31,19 @@
 		<p:layoutUnit position="north" >
 			<ui:insert name="cabecalho"></ui:insert>
 		</p:layoutUnit>
+		
+		<p:layoutUnit position="west" >
+			<ui:insert name="formulario"></ui:insert>
+		</p:layoutUnit>
 
 		<p:layoutUnit position="center">
 			<ui:insert name="conteudo"></ui:insert>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="south" >
+		<p:layoutUnit position="south" size="30" >
 			<ui:insert name="rodape"></ui:insert>
 		</p:layoutUnit>
 	</p:layout>
-
-
-
 
 </h:body>
 </html>

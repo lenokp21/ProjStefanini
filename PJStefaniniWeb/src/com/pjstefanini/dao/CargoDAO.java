@@ -76,6 +76,8 @@ public class CargoDAO {
 		
 		conexao = FabricaConexao.getConexao();
 		
+		System.out.println(cargo.getId());
+		
 		try {
 			ps = (PreparedStatement) conexao.prepareStatement(delete);
 			ps.setInt(1, cargo.getId());

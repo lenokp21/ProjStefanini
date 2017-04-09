@@ -7,40 +7,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<div>
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:panelGrid columns="2" styleClass="comBorda">
-					<p:outputLabel for="nome" value="Nome Fantasia:" />
-					<p:inputText id="nome" value="#{empresaBean.empresa.nomeFantasia}" />
-
-					<p:outputLabel for="nmEmp" value="Nome Empresarial:" />
-					<p:inputText id="nmEmp"
-						value="#{empresaBean.empresa.nomeEmpresarial}" />
-
-					<p:outputLabel for="cnpj" value="CNPJ:" />
-					<p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" maxlength="15" />
-
-					<p:outputLabel for="end" value="Endereço:" />
-					<p:inputText id="end" value="#{empresaBean.empresa.endereco}" />
-
-					<p:outputLabel for="tel" value="Telefone:" />
-					<p:inputText id="tel" value="#{empresaBean.empresa.telefone}" />
-
-					<p:outputPanel />
-					<p:panelGrid columns="2">
-						<p:commandButton value="Novo" action="#{empresaBean.novo()}"
-							update="@form" />
-						<p:commandButton value="Salvar"
-							action="#{empresaBean.salvar()}" update="@form" />
-					</p:panelGrid>
-
-					<f:facet name="header">
-						<p:outputLabel value="Dados da Empresa" />
-					</f:facet>
-
-				</h:panelGrid>
-
-				<h:panelGrid styleClass="comBorda">
+		<h:form id="contEmp">
+				<h:panelGrid >
 					<p:dataTable value="#{empresaBean.empresas}" var="emp" scrollable="true" scrollHeight="345" >
 					
 						<p:column headerText="Nome Fantasia">
@@ -60,16 +28,14 @@
 						<p:column headerText="Telefone">
 							<h:outputText value="#{emp.telefone}" />
 						</p:column>
-						<p:column>
-							<p:commandButton value="Editar" icon="ui-icon-pencil"
-								action="#{empresaBean.editar(emp)}" update="@form" />
-							<p:commandButton value="Excluir" icon="ui-icon-trash"
-								action="#{empresaBean.excluir(emp)}" update="@form" />
+						<p:column style="width: 15%">
+							<p:commandButton icon="ui-icon-pencil"
+								action="#{empresaBean.editar(emp)}" update="dadoEmp" />
+							<p:commandButton icon="ui-icon-trash"
+								action="#{empresaBean.excluir(emp)}" update="contEmp" />
 						</p:column>
 						
 					</p:dataTable>
-					
-				</h:panelGrid>
 				
 			</h:panelGrid>
 		</h:form>

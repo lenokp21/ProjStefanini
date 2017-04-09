@@ -8,12 +8,16 @@
 
 	<div align="center">
 		<h:form>
-			<p:menubar >
-				<p:menuitem value="Home" url="index.jsf" style="margin-right:10px"  />
-				<p:menuitem value="Funcionario" url="funcionario.jsf" style="margin-right:10px" />
-				<p:menuitem value="Empresa" url="empresa.jsf" style="margin-right:10px" />
-				<p:menuitem value="Cargo" url="cargo.jsf" style="margin-right:10px" />
-			</p:menubar>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Funcionarios:" />
+				<p:outputLabel value="#{funcionarioBean.funcionarios.size()}" />
+
+				<p:outputLabel value="Empresas:" />
+				<p:outputLabel value="#{empresaBean.empresas.size()}" />
+
+				<p:outputLabel value="Cargos:" />
+				<p:outputLabel value="#{cargoBean.cargos.size()}" />
+			</p:panelGrid>
 		</h:form>
 	</div>
 </ui:composition>

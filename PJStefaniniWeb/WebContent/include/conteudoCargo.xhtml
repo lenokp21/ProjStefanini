@@ -6,49 +6,28 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<div align="center">
-	<h:form>
-<h:panelGrid columns="2" >
-		<h:panelGrid columns="2" styleClass="comBorda">
-			<p:outputLabel for="cargo" value="Cargo:" />
-			<p:inputText id="cargo" value="#{cargoBean.cargo.cargo}" />
-			
-			<p:outputLabel for="desc" value="Descrição:" />
-			<p:inputTextarea id="desc" value="#{cargoBean.cargo.descricao}" cols="25" rows="5"/>
-			
-			<p:outputLabel for="val" value="Valor Hora/Trabalho:" />
-			<p:inputText id="val" value="#{cargoBean.cargo.valorHora}" />
-			
-			<p:outputPanel />
-			<p:panelGrid columns="2" captionClass="semBorda" >
-			<p:commandButton value="Novo" action="#{cargoBean.novo()}" update="@form" />
-			<p:commandButton value="Salvar" action="#{cargoBean.salvar()}" update="@form"/>
-			</p:panelGrid>
-			<f:facet name="header">
-				<p:outputLabel value="Dados do Cargo" />
-			</f:facet>
-			
-		</h:panelGrid>
-		
-		<h:panelGrid styleClass="comBorda">
-			<p:dataTable value="#{cargoBean.cargos}" var="cg" scrollable="true" scrollHeight="345">
-				<p:column headerText="Cargo">
-					<h:outputText value="#{cg.cargo}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{cg.descricao}" />
-				</p:column>
-				<p:column headerText="valor Trab/Horas">
-					<h:outputText value="#{cg.valorHora}" />
-				</p:column>
-				<p:column>
-					<p:commandButton value="Editar" icon="ui-icon-pencil" action="#{cargoBean.editar(cg)}" update="@form"/>
-					<p:commandButton value="Excluir" icon="ui-icon-trash" action="#{cargoBean.excluir(cg)}" update="@form"/>
-				</p:column>
-			</p:dataTable>
-		</h:panelGrid>
-		
-</h:panelGrid>
-	</h:form>
-</div>
+	<div align="center">
+		<h:form id="contCargo">
+				<h:panelGrid >
+					<p:dataTable value="#{cargoBean.cargos}" var="cg" scrollable="true"
+						scrollHeight="345">
+						<p:column headerText="Cargo">
+							<h:outputText value="#{cg.cargo}" />
+						</p:column>
+						<p:column headerText="Descrição">
+							<h:outputText value="#{cg.descricao}" />
+						</p:column>
+						<p:column headerText="valor Trab/Horas">
+							<h:outputText value="#{cg.valorHora}" />
+						</p:column>
+						<p:column style="width: 15%">
+							<p:commandButton icon="ui-icon-pencil"
+								action="#{cargoBean.editar(cg)}" update="dadoCargo" />
+							<p:commandButton icon="ui-icon-trash"
+								action="#{cargoBean.excluir(cg)}" update="@form" />
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+		</h:form>
+	</div>
 </ui:composition>

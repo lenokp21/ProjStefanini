@@ -7,8 +7,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <div align="center">
-	<h:form>
-		<h1>Esta Funcionando!</h1>
+	<h:form id="grafForm">
+		<p:chart type="bar" model="#{chartView.barModel}" style="height:300px"/>
 	</h:form>
 </div>
 </ui:composition>

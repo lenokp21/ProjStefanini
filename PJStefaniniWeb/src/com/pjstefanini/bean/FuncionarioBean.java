@@ -42,6 +42,7 @@ public class FuncionarioBean {
 	public void editar(Funcionario funcionario) throws SistemaException{
 		this.funcionario = funcionario;
 		this.listar();
+		
 	}
 	
 	public void excluir(Funcionario funcionario) throws SistemaException{
@@ -72,6 +73,9 @@ public class FuncionarioBean {
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
+
+
+	
 
 	
 	
