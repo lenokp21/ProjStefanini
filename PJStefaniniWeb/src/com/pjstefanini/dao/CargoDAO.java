@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.primefaces.model.chart.ChartSeries;
+
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSetImpl;
@@ -17,6 +19,8 @@ public class CargoDAO {
 	private final static String update = " UPDATE tbc_cargo SET tbc_cargo = ?, tbc_descricao = ?, tbc_valorHora = ? WHERE tbc_id = ? ";
 	private final static String select = " SELECT * FROM tbc_cargo ";
 	private final static String delete = " DELETE FROM tbc_cargo WHERE tbc_id = ? ";
+	
+	private final static String empresaCargos = " SELECT tbe_nome_fantasia, count(tbc_id) qtd FROM tbe_empresa, tbf_funcionario, tbc_cargo WHERE tbe_id = tbf_idempresa AND tbf_idcargo = tbc_id GROUP BY tbe_nome_fantasia ";
 
 	private static Connection conexao;
 	private static PreparedStatement ps;
@@ -61,6 +65,29 @@ public class CargoDAO {
 				c.setValorHora(rs.getDouble("tbc_valorHora"));
 				
 				cargos.add(c);
+			}
+			
+			FabricaConexao.fechaConexao();
+			return cargos;
+			
+		} catch (SQLException e) {
+			throw new SistemaException(" Não foi Possivel listar os Cargos. ", e);
+		}
+
+	}
+	
+	public static ChartSeries listarEmpresaCargos() throws SistemaException {
+		
+		ChartSeries cargos = new ChartSeries();
+		cargos.setLabel("Cargos");
+		
+		conexao = FabricaConexao.getConexao();
+		try {
+			ps = (PreparedStatement) conexao.prepareStatement(empresaCargos);
+			ResultSetImpl rs = (ResultSetImpl) ps.executeQuery();
+			
+			while(rs.next()){
+				cargos.set(rs.getString("tbe_nome_fantasia"), rs.getInt("qtd"));
 			}
 			
 			FabricaConexao.fechaConexao();

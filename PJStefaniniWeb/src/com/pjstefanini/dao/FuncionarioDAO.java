@@ -19,7 +19,7 @@ public class FuncionarioDAO {
 	private final static String update = " UPDATE tbf_funcionario SET tbf_nome = ?, tbf_cpf = ?, tbf_endereco = ?, tbf_telefone = ?, tbf_idcargo = ?, tbf_idempresa = ? WHERE tbf_id = ? ";
 	private final static String select = " SELECT * FROM tbf_funcionario ";
 	private final static String delete = " DELETE FROM tbf_funcionario WHERE tbf_id = ? ";
-	private final static String funcionarioEmpresa = " SELECT tbe_nome_fantasia, count(tbf_id) qtd FROM tbe_empresa, tbf_funcionario WHERE tbe_id = tbf_idempresa GROUP BY tbe_nome_fantasia ";
+	private final static String funcionarioEmpresa = " SELECT tbe_nome_fantasia, count(tbf_id) qtd FROM tbe_empresa LEFT JOIN tbf_funcionario ON tbe_id = tbf_idempresa GROUP BY tbe_nome_fantasia ";
 
 	private static Connection conexao;
 	private static PreparedStatement ps;

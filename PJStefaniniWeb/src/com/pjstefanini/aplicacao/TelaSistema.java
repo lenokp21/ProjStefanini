@@ -23,6 +23,7 @@ public class TelaSistema extends Application {
 		
 		scene = new Scene(new Tela(), 900, 600);
 		
+		stage.setTitle("S . G . F - Sistema de Gestão de Funcionarios");
 		stage.setFullScreen(true);
 		stage.setScene(scene);
 		stage.show();
